@@ -1,0 +1,88 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  /* font-weight: 400; */
+
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
+
+  /* font-synthesis: none; */
+  /* text-rendering: optimizeLegibility; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  /* min-width: 320px; */
+  min-height: 100vh;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 20px;
+  border: 1px solid rgb(203, 203, 203);
+}
+table {
+  border-spacing: 2rem 1rem;
+}
+
+.btn {
+  /* margin-left: 2rem; */
+  margin-bottom: 2.5rem;
+  background-color: #01136c;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-add {
+  background-color: #3b9006;
+}
+
+.detail {
+  /* font-size: 0.5rem; */
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.detail:hover {
+  color: #3b9006;
+}
+
+.edit {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
+}
+
+.edit:hover {
+  color: #3b9006;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  color: rgb(152, 152, 152);
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(206, 206, 206);
+  width: 300px;
+}
