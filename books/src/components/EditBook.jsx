@@ -15,8 +15,6 @@ export default function EditBook({
 }) {
   let { id } = useParams()
 
-  console.log(window.location.pathname)
-
   const bookToEditIndex = bookList.findIndex((book) => book.id == id)
 
   useEffect(() => {
@@ -27,7 +25,7 @@ export default function EditBook({
 
   function editBook(e) {
     e.preventDefault()
-    if (title.trim() !== '' && author.trim() !== '' && year.trim() !== '') {
+    if (title.trim() !== '' && author.trim() !== '' && String(year).trim() !== '') {
       const updatedBooks = bookList.map((book) =>
         book.id == id ? { ...book, title, author, year } : book
       )

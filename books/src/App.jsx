@@ -1,4 +1,5 @@
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css'
 import AddBook from './components/AddBook'
 import Home from './components/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'

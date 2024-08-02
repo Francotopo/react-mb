@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Form from './Form'
+import { useEffect } from 'react'
 
 export default function AddBook({
   bookList,
@@ -24,6 +25,12 @@ export default function AddBook({
     setAuthor('')
     setYear('')
   }
+
+  useEffect(() => {
+    setTitle('')
+    setAuthor('')
+    setYear('')
+  }, [])
 
   return (
     <div>

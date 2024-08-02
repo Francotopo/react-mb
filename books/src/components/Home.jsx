@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom'
-import { MdModeEdit } from 'react-icons/md'
+import { MdModeEdit, MdDeleteForever } from 'react-icons/md'
 import { useState } from 'react'
 
-export default function Home({ bookList }) {
+export default function Home({ bookList, setBookList }) {
   const [bookDetails, setBookDetails] = useState('')
 
   function onclickBookDetails(id) {
     const bookDetails = bookList.filter((book) => book.id === id)
     setBookDetails(bookDetails)
+  }
+
+  function handleDelete(id) {
+    const newList = bookList.filter((book) => book.id !== id)
+    setBookList(newList)
   }
 
   return (
@@ -26,6 +31,7 @@ export default function Home({ bookList }) {
               <th>Année</th>
               <th>Aficher le détail</th>
               <th>Editer</th>
+              <th>Supprimer</th>
             </tr>
             {bookList.map((book) => (
               <tr key={book.title}>
@@ -44,6 +50,11 @@ export default function Home({ bookList }) {
                 <td>
                   <Link to={`/editbook/${book.id}`}>
                     <MdModeEdit className="edit" />
+                  </Link>
+                </td>
+                <td>
+                  <Link onClick={() => handleDelete(book.id)}>
+                    <MdDeleteForever className="delete" />
                   </Link>
                 </td>
               </tr>

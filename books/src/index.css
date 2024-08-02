@@ -63,7 +63,10 @@ table {
   color: #3b9006;
 }
 
-.edit {
+.edit,
+.delete {
+  display: block;
+  margin: auto;
   font-size: 1.5rem;
   cursor: pointer;
   color: black;
@@ -71,6 +74,12 @@ table {
 
 .edit:hover {
   color: #3b9006;
+  transform: scale(1.2);
+}
+
+.delete:hover {
+  color: #902406;
+  transform: scale(1.2);
 }
 
 label {
