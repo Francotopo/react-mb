@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import Form from './Form'
 import { useEffect } from 'react'
+import { enqueueSnackbar } from 'notistack'
 
 export default function EditBook({
   bookList,
@@ -30,9 +31,25 @@ export default function EditBook({
         book.id == id ? { ...book, title, author, year } : book
       )
       setBookList(updatedBooks)
+      enqueueSnackbar('Livre édité', {
+        anchorOrigin: {
+          horizontal: 'center',
+          vertical: 'left',
+        },
+        autoHideDuration: 2500,
+        variant: 'success',
+      })
+
       navigate('/')
     } else {
-      console.log('Veuillez remplir tous les champs !!!')
+      enqueueSnackbar('Veuillez remplir tous les champs', {
+        anchorOrigin: {
+          horizontal: 'center',
+          vertical: 'left',
+        },
+        autoHideDuration: 2500,
+        variant: 'error',
+      })
     }
     setTitle('')
     setAuthor('')

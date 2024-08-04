@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 
 export default function BookDetails({ bookList }) {
+  
   let { id } = useParams()
   const bookDetailIndex = bookList.findIndex((book) => book.id == id)
 

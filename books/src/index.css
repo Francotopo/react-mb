@@ -1,7 +1,7 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: roboto Arial, sans-serif;
   line-height: 1.5;
-  /* font-weight: 400; */
 
   /* color-scheme: light dark; */
   /* color: rgba(255, 255, 255, 0.87); */
@@ -95,3 +95,49 @@ input {
   border: 1px solid rgb(206, 206, 206);
   width: 300px;
 }
+
+.btn-container {
+  width: 300px;
+  margin: auto;
+}
+
+.btn-container button {
+  padding: 15px;
+}
+
+.btn-container button:first-child {
+  margin-right: 30px;
+  background-color: #3498db;
+}
+.btn-container button:last-child {
+  margin-right: 30px;
+  background-color: #e67e22;
+}
+
+.card-container {
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  text-align: center;
+  width: 230px;
+  border: solid 1px rgb(197, 197, 197);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 0px rgba(217, 217, 217, 1);
+}
+
+.card-container .year {
+  color: rgb(176, 176, 176);
+}
+
+.container-links-card {
+  display: flex;
+  justify-content: space-around;
+}
+

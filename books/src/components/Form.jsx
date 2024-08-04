@@ -12,7 +12,7 @@ export default function Form({
       <form>
         <div>
           <label>Titre</label>
-          <input
+          <input 
             type="text"
             placeholder="Saisir le titre"
             value={title}
