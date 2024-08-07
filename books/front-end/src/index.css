@@ -1,0 +1,149 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+}
+
+:root {
+  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: roboto Arial, sans-serif;
+  line-height: 1.5;
+
+  margin: 0 auto;
+
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
+
+  /* font-synthesis: none; */
+  /* text-rendering: optimizeLegibility; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  /* min-width: 320px; */
+  min-height: 100vh;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 20px;
+  border: 1px solid rgb(203, 203, 203);
+}
+table {
+  border-spacing: 2rem 1rem;
+}
+
+.btn {
+  /* margin-left: 2rem; */
+  margin-bottom: 2.5rem;
+  background-color: #01136c;
+  color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn-add {
+  background-color: #3b9006;
+}
+
+.detail {
+  /* font-size: 0.5rem; */
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.detail:hover {
+  color: #3b9006;
+}
+
+.edit,
+.delete {
+  display: block;
+  margin: auto;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: black;
+}
+
+.edit:hover {
+  color: #3b9006;
+  transform: scale(1.2);
+}
+
+.delete:hover {
+  color: #902406;
+  transform: scale(1.2);
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  color: rgb(152, 152, 152);
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(206, 206, 206);
+  width: 300px;
+}
+
+.btn-container {
+  width: 300px;
+  margin: auto;
+}
+
+.btn-container button {
+  padding: 15px;
+}
+
+.btn-container button:first-child {
+  margin-right: 30px;
+  background-color: #3498db;
+}
+.btn-container button:last-child {
+  margin-right: 30px;
+  background-color: #e67e22;
+}
+
+.card-container {
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  text-align: center;
+  width: 230px;
+  border: solid 1px rgb(197, 197, 197);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px 0px rgba(217, 217, 217, 1);
+}
+
+.card-container .year {
+  color: rgb(176, 176, 176);
+}
+
+.container-links-card {
+  display: flex;
+  justify-content: space-around;
+}

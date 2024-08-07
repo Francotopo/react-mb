@@ -24,7 +24,7 @@ export default function Home({ bookList, setBookList }) {
       variant: 'success',
     })
   }
-
+ 
   function handleViewChange(view) {
     setShowBooks(view)
   }
