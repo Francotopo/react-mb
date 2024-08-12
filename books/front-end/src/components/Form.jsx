@@ -5,14 +5,14 @@ export default function Form({
   addBook,
   setTitle,
   setAuthor,
-  setYear,
+  setPublishYear,
 }) {
   return (
     <div>
       <form>
         <div>
           <label>Titre</label>
-          <input 
+          <input
             type="text"
             placeholder="Saisir le titre"
             value={title}
@@ -23,7 +23,7 @@ export default function Form({
           <label>Auteur</label>
           <input
             type="text"
-            placeholder="Saisir le titre"
+            placeholder="Saisir l'auteur"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
@@ -32,9 +32,9 @@ export default function Form({
           <label>Année de publication</label>
           <input
             type="text"
-            placeholder="Saisir le titre"
+            placeholder="Saisir l'année de publication"
             value={year}
-            onChange={(e) => setYear(e.target.value)}
+            onChange={(e) => setPublishYear(e.target.value)}
           />
         </div>
         <div></div>

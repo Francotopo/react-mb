@@ -6,15 +6,15 @@ export default function Card({ bookList, handleDelete }) {
     <div className="card-container">
       {bookList.map((book) => {
         return (
-          <div key={book.id} className="card">
+          <div key={book._id} className="card">
             <h3>{book.title}</h3>
             <p>Auteur : {book.author}</p>
-            <p className="year">Année de parution : {book.year}</p>
+            <p className="year">Année de parution : {book.publishYear}</p>
             <div className="container-links-card">
-              <Link to={`/editbook/${book.id}`}>
+              <Link to={`/editbook/${book._id}`}>
                 <MdModeEdit className="edit" />
               </Link>
-              <button onClick={() => handleDelete(book.id)}>
+              <button onClick={() => handleDelete(book._id)}>
                 <MdDeleteForever className="delete" />
               </button>
             </div>

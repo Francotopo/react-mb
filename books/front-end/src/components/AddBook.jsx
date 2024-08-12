@@ -9,15 +9,15 @@ export default function AddBook({
   navigate,
   title,
   author,
-  year,
+  publishYear,
   setTitle,
   setAuthor,
-  setYear,
+  setPublishYear,
 }) {
   function addBook(e) {
     e.preventDefault()
-    if (title.trim() !== '' && author.trim() !== '' && year.trim() !== '') {
-      setBookList([...bookList, { id: bookList.length + 1, title, author, year }])
+    if (title.trim() !== '' && author.trim() !== '' && publishYear.trim() !== '') {
+      setBookList([...bookList, { _id: bookList.length + 1, title, author, publishYear }])
       enqueueSnackbar('Livre ajouté', {
         anchorOrigin: {
           horizontal: 'center',
@@ -39,13 +39,13 @@ export default function AddBook({
     }
     setTitle('')
     setAuthor('')
-    setYear('')
+    setPublishYear('')
   }
 
   useEffect(() => {
     setTitle('')
     setAuthor('')
-    setYear('')
+    setPublishYear('')
   }, [])
 
   return (
@@ -64,11 +64,11 @@ export default function AddBook({
       <Form
         title={title}
         author={author}
-        year={year}
+        publishYear={publishYear}
         addBook={addBook}
         setTitle={setTitle}
         setAuthor={setAuthor}
-        setYear={setYear}
+        setPublishYear={setPublishYear}
       />
 
       <button

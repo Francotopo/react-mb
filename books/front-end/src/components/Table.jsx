@@ -23,22 +23,22 @@ export default function Table({ bookList, handleDelete }) {
           </thead>
           <tbody>
             {bookList.map((book) => (
-              <tr key={book.id}>
+              <tr key={book._id}>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
-                <td>{book.year}</td>
+                <td>{book.publishYear}</td>
                 <td>
-                  <Link to={`/bookdetails/${book.id}`} className="detail">
+                  <Link to={`/bookdetails/${book._id}`} className="detail">
                     Détails
                   </Link>
                 </td>
                 <td>
-                  <Link to={`/editbook/${book.id}`}>
+                  <Link to={`/editbook/${book._id}`}>
                     <MdModeEdit className="edit" />
                   </Link>
                 </td>
                 <td>
-                  <button onClick={() => handleDelete(book.id)}>
+                  <button onClick={() => handleDelete(book._id)}>
                     <MdDeleteForever className="delete" />
                   </button>
                 </td>

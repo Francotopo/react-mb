@@ -7,13 +7,15 @@ export default function Home({ bookList, setBookList }) {
   const [bookDetails, setBookDetails] = useState(null)
   const [showBooks, setShowBooks] = useState('table')
 
-  function handleBookDetailsClick(id) {
-    const bookDetails = bookList.find((book) => book.id === id)
+  function handleBookDetailsClick(_id) {
+    const bookDetails = bookList.find((book) => book._id === _id)
     setBookDetails(bookDetails)
   }
 
-  function handleDelete(id) {
-    const newList = bookList.filter((book) => book.id !== id)
+  
+
+  function handleDelete(_id) {
+    const newList = bookList.filter((book) => book._id !== _id)
     setBookList(newList)
     enqueueSnackbar('Livre supprimé', {
       anchorOrigin: {
@@ -28,6 +30,8 @@ export default function Home({ bookList, setBookList }) {
   function handleViewChange(view) {
     setShowBooks(view)
   }
+
+
 
   return (
     <div>

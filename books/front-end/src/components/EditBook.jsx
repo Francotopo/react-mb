@@ -9,26 +9,30 @@ export default function EditBook({
   navigate,
   title,
   author,
-  year,
+  publishYear,
   setTitle,
   setAuthor,
-  setYear,
+  setPublishYear,
 }) {
-  let { id } = useParams()
+  let { _id } = useParams()
 
-  const bookToEditIndex = bookList.findIndex((book) => book.id == id)
+  const bookToEditIndex = bookList.findIndex((book) => book._id == _id)
 
   useEffect(() => {
     setTitle(bookList[bookToEditIndex].title)
     setAuthor(bookList[bookToEditIndex].author)
-    setYear(bookList[bookToEditIndex].year)
+    setPublishYear(bookList[bookToEditIndex].publishYear)
   }, [])
 
   function editBook(e) {
     e.preventDefault()
-    if (title.trim() !== '' && author.trim() !== '' && String(year).trim() !== '') {
+    if (
+      title.trim() !== '' &&
+      author.trim() !== '' &&
+      String(publishYear).trim() !== ''
+    ) {
       const updatedBooks = bookList.map((book) =>
-        book.id == id ? { ...book, title, author, year } : book
+        book._id == _id ? { ...book, title, author, publishYear } : book
       )
       setBookList(updatedBooks)
       enqueueSnackbar('Livre édité', {
@@ -53,7 +57,7 @@ export default function EditBook({
     }
     setTitle('')
     setAuthor('')
-    setYear('')
+    setPublishYear('')
   }
 
   return (
@@ -71,11 +75,11 @@ export default function EditBook({
       <Form
         title={title}
         author={author}
-        year={year}
+        publishYear={publishYear}
         editBook={editBook}
         setTitle={setTitle}
         setAuthor={setAuthor}
-        setYear={setYear}
+        setPublishYear={setPublishYear}
       />
 
       <button

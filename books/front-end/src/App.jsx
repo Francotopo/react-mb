@@ -2,47 +2,30 @@ import 'react-toastify/dist/ReactToastify.css'
 import AddBook from './components/AddBook'
 import Home from './components/Home'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BookDetails from './components/BookDetails'
 import EditBook from './components/EditBook'
+import axios from 'axios'
 
 function App() {
   const navigate = useNavigate()
-  const [bookList, setBookList] = useState([
-    {
-      id: 1,
-      title: "Harry Potter à l'école des sorciers",
-      author: 'J. K. Rowling',
-      year: 2001,
-    },
-    {
-      id: 2,
-      title: 'Le seigneur des anneaux Tome 1',
-      author: 'J. R. R. Tolkien',
-      year: 1954,
-    },
-    {
-      id: 3,
-      title: '1984',
-      author: 'George Orwell',
-      year: 1949,
-    },
-    {
-      id: 4,
-      title: 'Les misérables',
-      author: 'Victor Hugo',
-      year: 1862,
-    },
-  ])
+  const [bookList, setBookList] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/books').then((response) => {
+      console.log(response.data.data)
+      setBookList(response.data.data)
+    })
+  }, [])
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
-  const [year, setYear] = useState('')
+  const [publishYear, setPublishYear] = useState('')
 
   return (
     <Routes>
       <Route path="/" element={<Home bookList={bookList} setBookList={setBookList} />} />
-      <Route path="/bookdetails/:id" element={<BookDetails bookList={bookList} />} />
+      <Route path="/bookdetails/:_id" element={<BookDetails bookList={bookList} />} />
 
       <Route
         path="/addbook"
@@ -53,15 +36,15 @@ function App() {
             navigate={navigate}
             title={title}
             author={author}
-            year={year}
+            publishYear={publishYear}
             setTitle={setTitle}
             setAuthor={setAuthor}
-            setYear={setYear}
+            setPublishYear={setPublishYear}
           />
         }
       />
       <Route
-        path="/editbook/:id"
+        path="/editbook/:_id"
         element={
           <EditBook
             bookList={bookList}
@@ -69,10 +52,10 @@ function App() {
             navigate={navigate}
             title={title}
             author={author}
-            year={year}
+            publishYear={publishYear}
             setTitle={setTitle}
             setAuthor={setAuthor}
-            setYear={setYear}
+            setPublishYear={setPublishYear}
           />
         }
       />

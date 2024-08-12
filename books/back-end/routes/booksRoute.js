@@ -1,13 +1,16 @@
-import express, { request, response } from 'express'
-import { Book } from '../models/bookModel'
+import express from 'express'
+import { Book } from '../models/bookModel.js'
 
-const router = express.Router()
+const bookRouter = express.Router()
 
-// Route to save a new Book
-router.post('/', async (request, response) => {
+//********************************************************************
+// Route pour créer un nouveau book
+//********************************************************************
+bookRouter.post('/', async (request, response) => {
   try {
     if (!request.body.title || !request.body.author || !request.body.publishYear) {
       return response.status(400).send({
+        // 400 : réponse d'erreur du client
         message: 'Send all required fields: title, author, publishYear',
       })
     }
@@ -17,22 +20,28 @@ router.post('/', async (request, response) => {
       publishYear: request.body.publishYear,
     }
 
-    // C'est ici qu'on stocke le livre dans la base de données
+    /* Stocker le book dans la base de données avec create(),
+        par le Schema Book créé avec mongoose */
     const book = await Book.create(newBook)
 
-    return response.status(201).send(book)
+    return response.status(201).send(book) // 201 : réponse reussie (successfull)
+    // et a conduit à la création d'une ressource
   } catch (error) {
     console.log(error.message)
-    response.status(500).send({ message: error.message })
+    response.status(500).send({ message: error.message }) // 500 : réponse d'erreur interne du serveur
   }
 })
+//====================================================================
 
-// Route for Get All Books from database
-router.get('/', async (request, response) => {
+//********************************************************************
+// Route pour lire tous les books de la base de données
+//********************************************************************
+bookRouter.get('/', async (request, response) => {
   try {
-    const books = await Book.find({})
+    const books = await Book.find({}) // Ne rien définir à find pour tout trouver
 
     return response.status(200).json({
+      // 200 : réponse reussie (successfull), requette réussie
       count: books.length,
       data: books,
     })
@@ -41,13 +50,16 @@ router.get('/', async (request, response) => {
     response.status(500).send({ message: error.message })
   }
 })
+// ===================================================================
 
-// Route for Get One Book from database by id
-router.get('/:id', async (request, response) => {
+//********************************************************************
+// Route pour lire un book de la base de données
+//********************************************************************
+bookRouter.get('/:id', async (request, response) => {
   try {
     const { id } = request.params
 
-    const book = await Book.findById(id) // C'est une fonction Mongoose
+    const book = await Book.findById(id) // findById() est une fonction Mongoose
 
     return response.status(200).json(book)
   } catch (error) {
@@ -55,9 +67,12 @@ router.get('/:id', async (request, response) => {
     response.status(500).send({ message: error.message })
   }
 })
+// ===================================================================
 
-// Route for Update a Book
-router.put(':id', async (request, request) => {
+//********************************************************************
+// Route pour mettre à jour un book dans la base de données
+//********************************************************************
+bookRouter.put('/:id', async (request, response) => {
   try {
     if (!request.body.title || !request.body.author || !request.body.publishYear) {
       return response.status(400).send({
@@ -67,10 +82,10 @@ router.put(':id', async (request, request) => {
 
     const { id } = request.params
 
-    const result = await Book.findByIdAndUpdate(id, response.body)
+    const result = await Book.findByIdAndUpdate(id, response.body) // findByIdAndUpdate() est une fonction mongoose
 
     if (!result) {
-      return response.status(404).json({ message: 'Book not found' })
+      return response.status(404).json({ message: 'Book not found' }) // 404 : réponse d'erreur du client, le serveur ne peut pas trouver la ressource demandée
     }
 
     return response.status(200).send({ message: 'Book updated successfully' })
@@ -79,13 +94,16 @@ router.put(':id', async (request, request) => {
     response.status(500).send({ message: error.message })
   }
 })
+// ===================================================================
 
-// Route for Delete a book
-router.delete(':id', async (request, response) => {
+//********************************************************************
+// Route pour supprimer un book dans la base de données
+//********************************************************************
+bookRouter.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params
 
-    const result = await Book.findByIdAndDelete(id)
+    const result = await Book.findByIdAndDelete(id) // findByIdAndDelete est une fonction mongoose
 
     if (!result) {
       return response.status(404).json({ message: 'Book not found' })
@@ -97,5 +115,6 @@ router.delete(':id', async (request, response) => {
     response.status(500).send({ message: error.message })
   }
 })
+// ===================================================================
 
-export default router
+export default bookRouter
