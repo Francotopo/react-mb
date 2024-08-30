@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Form from './Form'
 import { useEffect } from 'react'
 import { enqueueSnackbar } from 'notistack'
+import axios from 'axios'
 
 export default function AddBook({
   bookList,
@@ -17,7 +18,19 @@ export default function AddBook({
   function addBook(e) {
     e.preventDefault()
     if (title.trim() !== '' && author.trim() !== '' && publishYear.trim() !== '') {
-      setBookList([...bookList, { _id: bookList.length + 1, title, author, publishYear }])
+      axios
+        .post('http://localhost:3000/books', {
+          title,
+          author,
+          publishYear,
+        })
+        // Pour récupérer la liste avec le book ajouté pour que son _id s'intègre dans le key lors du rendu avec setbook(newlist)
+        .then((response) => {
+          const newBook = response.data
+          const newList = [...bookList, newBook]
+          setBookList(newList)
+        })
+
       enqueueSnackbar('Livre ajouté', {
         anchorOrigin: {
           horizontal: 'center',
@@ -65,7 +78,6 @@ export default function AddBook({
         title={title}
         author={author}
         publishYear={publishYear}
-        addBook={addBook}
         setTitle={setTitle}
         setAuthor={setAuthor}
         setPublishYear={setPublishYear}

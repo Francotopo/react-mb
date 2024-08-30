@@ -76,13 +76,13 @@ bookRouter.put('/:id', async (request, response) => {
   try {
     if (!request.body.title || !request.body.author || !request.body.publishYear) {
       return response.status(400).send({
-        message: 'Send all require fileds: title, author, publishYear',
+        message: 'Send all require filds: title, author, publishYear',
       })
     }
 
     const { id } = request.params
 
-    const result = await Book.findByIdAndUpdate(id, response.body) // findByIdAndUpdate() est une fonction mongoose
+    const result = await Book.findByIdAndUpdate(id, request.body) // findByIdAndUpdate() est une fonction mongoose
 
     if (!result) {
       return response.status(404).json({ message: 'Book not found' }) // 404 : réponse d'erreur du client, le serveur ne peut pas trouver la ressource demandée

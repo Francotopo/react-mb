@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     axios.get('http://localhost:3000/books').then((response) => {
-      console.log(response.data.data)
       setBookList(response.data.data)
     })
   }, [])

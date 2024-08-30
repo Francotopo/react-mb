@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { enqueueSnackbar } from 'notistack'
 import Table from './Table'
 import Card from './Card'
+import axios from 'axios'
 
 export default function Home({ bookList, setBookList }) {
   const [bookDetails, setBookDetails] = useState(null)
@@ -12,11 +13,11 @@ export default function Home({ bookList, setBookList }) {
     setBookDetails(bookDetails)
   }
 
-  
-
   function handleDelete(_id) {
+    axios.delete(`http://localhost:3000/books/${_id}`)
     const newList = bookList.filter((book) => book._id !== _id)
     setBookList(newList)
+
     enqueueSnackbar('Livre supprimé', {
       anchorOrigin: {
         horizontal: 'center',
@@ -26,12 +27,10 @@ export default function Home({ bookList, setBookList }) {
       variant: 'success',
     })
   }
- 
+
   function handleViewChange(view) {
     setShowBooks(view)
   }
-
-
 
   return (
     <div>

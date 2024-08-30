@@ -1,8 +1,7 @@
 export default function Form({
   title,
   author,
-  year,
-  addBook,
+  publishYear,
   setTitle,
   setAuthor,
   setPublishYear,
@@ -33,7 +32,7 @@ export default function Form({
           <input
             type="text"
             placeholder="Saisir l'année de publication"
-            value={year}
+            value={publishYear}
             onChange={(e) => setPublishYear(e.target.value)}
           />
         </div>

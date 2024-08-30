@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import Form from './Form'
 import { useEffect } from 'react'
 import { enqueueSnackbar } from 'notistack'
+import axios from 'axios'
 
 export default function EditBook({
   bookList,
@@ -24,17 +25,24 @@ export default function EditBook({
     setPublishYear(bookList[bookToEditIndex].publishYear)
   }, [])
 
-  function editBook(e) {
+  function editBook(e, _id) {
     e.preventDefault()
+
     if (
       title.trim() !== '' &&
       author.trim() !== '' &&
       String(publishYear).trim() !== ''
     ) {
+      axios.put(`http://localhost:3000/books/${_id}`, {
+        title,
+        author,
+        publishYear,
+      })
       const updatedBooks = bookList.map((book) =>
         book._id == _id ? { ...book, title, author, publishYear } : book
       )
       setBookList(updatedBooks)
+
       enqueueSnackbar('Livre édité', {
         anchorOrigin: {
           horizontal: 'center',
@@ -76,7 +84,6 @@ export default function EditBook({
         title={title}
         author={author}
         publishYear={publishYear}
-        editBook={editBook}
         setTitle={setTitle}
         setAuthor={setAuthor}
         setPublishYear={setPublishYear}
@@ -85,7 +92,7 @@ export default function EditBook({
       <button
         className="btn btn-add"
         style={{ display: 'block', marginTop: '30px', width: '100%' }}
-        onClick={editBook}
+        onClick={(e) => editBook(e, _id)}
       >
         Enregistrer
       </button>
