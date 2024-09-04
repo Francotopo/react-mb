@@ -3,6 +3,7 @@ import Form from './Form'
 import { useEffect } from 'react'
 import { enqueueSnackbar } from 'notistack'
 import axios from 'axios'
+import Button from './Button'
 
 export default function EditBook({
   bookList,
@@ -14,6 +15,7 @@ export default function EditBook({
   setTitle,
   setAuthor,
   setPublishYear,
+  path,
 }) {
   let { _id } = useParams()
 
@@ -70,14 +72,13 @@ export default function EditBook({
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center' }}>Editer un livre</h2>
-      <Link to="/">
-        <button
-          className="btn"
-          style={{ display: 'block', width: '100%', alignItems: 'center' }}
-        >
-          Page d'accueil
-        </button>
+      <div className="flex justify-center mt-10 mb-6">
+        <h2 className="text-slate-400 font-medium text-lg">Edition d&apos;un livre</h2>
+      </div>
+      <Link to="/" className="flex justify-center">
+        <Button className="text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 drop-shadow-md">
+          Retour page d&apos;accueil
+        </Button>
       </Link>
 
       <Form
@@ -87,15 +88,16 @@ export default function EditBook({
         setTitle={setTitle}
         setAuthor={setAuthor}
         setPublishYear={setPublishYear}
+        editBook={editBook}
+        _id={_id}
+        path={path}
       />
 
-      <button
-        className="btn btn-add"
-        style={{ display: 'block', marginTop: '30px', width: '100%' }}
-        onClick={(e) => editBook(e, _id)}
-      >
+      {/* <Button onClick={(e) => editBook(e, _id)} className="">
         Enregistrer
-      </button>
+      </Button> */}
+
+      {/* <button onClick={(e) => editBook(e, _id)}>Enregistrer</button> */}
     </div>
   )
 }

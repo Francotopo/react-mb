@@ -39,6 +39,7 @@ function App() {
             setTitle={setTitle}
             setAuthor={setAuthor}
             setPublishYear={setPublishYear}
+            path="/addbook"
           />
         }
       />
@@ -55,6 +56,7 @@ function App() {
             setTitle={setTitle}
             setAuthor={setAuthor}
             setPublishYear={setPublishYear}
+            path="/editbook"
           />
         }
       />

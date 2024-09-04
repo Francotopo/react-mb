@@ -3,6 +3,7 @@ import Form from './Form'
 import { useEffect } from 'react'
 import { enqueueSnackbar } from 'notistack'
 import axios from 'axios'
+import Button from './Button'
 
 export default function AddBook({
   bookList,
@@ -14,9 +15,11 @@ export default function AddBook({
   setTitle,
   setAuthor,
   setPublishYear,
+  path
 }) {
   function addBook(e) {
     e.preventDefault()
+
     if (title.trim() !== '' && author.trim() !== '' && publishYear.trim() !== '') {
       axios
         .post('http://localhost:3000/books', {
@@ -63,17 +66,14 @@ export default function AddBook({
 
   return (
     <div>
-      <h2 style={{ textAlign: 'center' }}>Ajouter un livre</h2>
-      <div>
-        <Link to="/">
-          <button
-            className="btn"
-            style={{ display: 'block', width: '100%', alignItems: 'center' }}
-          >
-            Annuler
-          </button>
-        </Link>
+      <div className="flex justify-center mt-10 mb-6">
+        <h2 className="text-slate-400 font-medium text-lg">Ajouter un livre</h2>
       </div>
+      <Link to="/" className="flex justify-center">
+        <Button className="w-52 text-indigo-600 border-indigo-600 hover:bg-indigo-600 hover:text-indigo-100 drop-shadow-md">
+          Annuler
+        </Button>
+      </Link>
       <Form
         title={title}
         author={author}
@@ -81,15 +81,12 @@ export default function AddBook({
         setTitle={setTitle}
         setAuthor={setAuthor}
         setPublishYear={setPublishYear}
+        addBook={addBook}
+        path={path}
       />
 
-      <button
-        className="btn btn-add"
-        style={{ display: 'block', marginTop: '30px', width: '100%' }}
-        onClick={addBook}
-      >
-        Ajouter
-      </button>
+      {}
+      {/* <Button onClick={addBook}>Ajouter</Button> */}
     </div>
   )
 }

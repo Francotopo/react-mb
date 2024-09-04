@@ -1,52 +1,78 @@
 import { Link } from 'react-router-dom'
-import { MdModeEdit, MdDeleteForever } from 'react-icons/md'
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 
 export default function Table({ bookList, handleDelete }) {
   return (
     <div>
-      <Link to="/addbook">
-        <button className="btn" style={{ marginLeft: '2rem', width: '200px' }}>
-          Ajouter un livre
-        </button>
-      </Link>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Titre</th>
-              <th>Auteur</th>
-              <th>Année</th>
-              <th>Aficher le détail</th>
-              <th>Editer</th>
-              <th>Supprimer</th>
+      {/* <div>
+        <Link to="/addbook">
+          <button>Ajouter un livre</button>
+        </Link>{' '}
+      </div> */}
+
+      <table className="shadow-md min-w-60 m-auto b ">
+        <thead>
+          <tr>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400  font-semibold text-left">
+              Titre
+            </th>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400  font-semibold text-left">
+              Auteur
+            </th>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400  font-semibold text-left">
+              Année
+            </th>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400  font-semibold text-left">
+              Aficher le détail
+            </th>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400 font-semibold text-left">
+              Editer
+            </th>
+            <th className="border border-slate-200 p-4 bg-slate-50 text-slate-400 font-semibold text-left">
+              Supprimer
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {bookList.map((book) => (
+            <tr key={book._id} className="hover:bg-slate-50">
+              <td className="border border-slate-200 p-4  text-slate-700 ">
+                {book.title}
+              </td>
+              <td className="border border-slate-200 p-4 text-slate-700">
+                {book.author}
+              </td>
+              <td className="border border-slate-200 p-4 text-slate-700">
+                {book.publishYear}
+              </td>
+              <td className="border border-slate-200 p-4 text-slate-700 text-center hover:text-slate-400">
+                <Link to={`/bookdetails/${book._id}`}>Détails</Link>
+              </td>
+
+              <td className=" border border-slate-200">
+                <Link
+                  to={`/editbook/${book._id}`}
+                  className="flex justify-center items-center h-12"
+                >
+                  <FaEdit className=" text-green-600 hover:text-green-500 text-lg" />
+                </Link>
+              </td>
+
+              <td
+                className="border border-slate-200 text-center 
+               "
+              >
+                <button
+                  onClick={() => handleDelete(book._id)}
+                  className="w-full h-10 flex justify-center items-center"
+                >
+                  <FaTrashAlt className="  text-red-700 hover:text-red-500 text-lg " />
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {bookList.map((book) => (
-              <tr key={book._id}>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.publishYear}</td>
-                <td>
-                  <Link to={`/bookdetails/${book._id}`} className="detail">
-                    Détails
-                  </Link>
-                </td>
-                <td>
-                  <Link to={`/editbook/${book._id}`}>
-                    <MdModeEdit className="edit" />
-                  </Link>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(book._id)}>
-                    <MdDeleteForever className="delete" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
