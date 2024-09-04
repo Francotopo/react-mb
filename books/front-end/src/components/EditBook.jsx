@@ -92,12 +92,6 @@ export default function EditBook({
         _id={_id}
         path={path}
       />
-
-      {/* <Button onClick={(e) => editBook(e, _id)} className="">
-        Enregistrer
-      </Button> */}
-
-      {/* <button onClick={(e) => editBook(e, _id)}>Enregistrer</button> */}
     </div>
   )
 }

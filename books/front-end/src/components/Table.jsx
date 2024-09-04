@@ -4,12 +4,6 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 export default function Table({ bookList, handleDelete }) {
   return (
     <div>
-      {/* <div>
-        <Link to="/addbook">
-          <button>Ajouter un livre</button>
-        </Link>{' '}
-      </div> */}
-
       <table className="shadow-md min-w-60 m-auto b ">
         <thead>
           <tr>

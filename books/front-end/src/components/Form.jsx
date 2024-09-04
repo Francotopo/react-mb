@@ -12,21 +12,6 @@ export default function Form({
   path,
   addBook,
 }) {
-  // function handleOnClick(path) {
-  //   if (path === '/editbook') {
-  //     return (
-  //       <Button
-  //         onClick={(e) => editBook(e, _id)}
-  //         className="w-full mt-9  text-emerald-600 border-emerald-600  hover:bg-emerald-700 hover:text-emerald-100 drop-shadow-md"
-  //       >
-  //         Enregistrer
-  //       </Button>
-  //     )
-  //   } else if (path === '/addbook') {
-  //     return addbook
-  //   }
-  // }
-
   return (
     <div className="mt-11">
       <form className="max-w-sm mx-auto">
@@ -62,13 +47,6 @@ export default function Form({
             onChange={(e) => setPublishYear(e.target.value)}
           />
         </div>
-
-        {/* <Button
-          onClick={(e) => editBook(e, _id)}
-          className="w-full mt-9  text-emerald-600 border-emerald-600  hover:bg-emerald-700 hover:text-emerald-100 drop-shadow-md"
-        >
-          Enregistrer
-        </Button> */}
 
         {path === '/addbook' ? (
           <div className="flex justify-center">

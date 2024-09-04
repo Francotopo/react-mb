@@ -15,7 +15,7 @@ export default function AddBook({
   setTitle,
   setAuthor,
   setPublishYear,
-  path
+  path,
 }) {
   function addBook(e) {
     e.preventDefault()
@@ -84,9 +84,6 @@ export default function AddBook({
         addBook={addBook}
         path={path}
       />
-
-      {}
-      {/* <Button onClick={addBook}>Ajouter</Button> */}
     </div>
   )
 }
